@@ -1,0 +1,16 @@
+<table id="reclamos" >
+   <tr>
+     <th>Codigo</th>
+     <th>Empresa</th>
+     <th>Motivo</th>
+     <th>Estado</th>
+     <th>Fecha Creacion</th>
+   </tr>
+  <tr *ngFor="let item of reclamos | keyvalue">
+   <td>{{ item.value.reclamo.id }}</td>
+   <td>{{ item.value.reclamo.empresa.nombreEmpresa }}</td>
+   <td>{{ item.value.reclamo.reclamoMotivo.descripcion }}</td>
+   <td>{{ item.value.reclamo.reclamoEstado.reclamoEstadoMaestro.descripcion }}</td>
+   <td>{{ item.value.reclamo.fechaCreacion | date:'dd/MM/yyyy HH:mm' }}</td>
+    </tr>  
+</table> 

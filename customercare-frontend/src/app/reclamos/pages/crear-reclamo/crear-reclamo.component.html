@@ -1,0 +1,121 @@
+<h1>
+  Crear Reclamo
+</h1>
+<mat-divider class="mb-2"></mat-divider>
+<div class="col-12 sm:col-12">
+  <mat-card>
+     <mat-card-content>
+        <form class="grid" [formGroup]="reclamoForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="col-12 sm:col-7">
+           <mat-label>Descripcion del reclamo</mat-label>
+           <input
+              matInput
+              type="text"
+              required
+              formControlName="descripcion"
+              />
+        </mat-form-field>
+        <mat-form-field class="col-3">
+           <mat-label>Motivo del reclamo</mat-label>
+           <mat-select
+              formControlName="reclamoMotivo"
+              required
+              >
+              <mat-option *ngFor="let itemReclamoMotivo of reclamoMotivo"
+              [value]="itemReclamoMotivo.id">
+              {{ itemReclamoMotivo.desc }}
+              </mat-option>
+           </mat-select>
+        </mat-form-field>
+        <mat-form-field class="col-2">
+           <mat-label>Empresa</mat-label>
+           <mat-select
+              formControlName="empresa"
+              required
+              >
+              <mat-option *ngFor="let empresa of empresas"
+              [value]="empresa.id">
+              {{ empresa.desc }}
+              </mat-option>
+           </mat-select>
+        </mat-form-field>
+         <!-- Email Cliente -->
+        <mat-form-field class="col-12 sm:col-8">
+           <mat-label>Correo Cliente</mat-label>
+           <input
+              matInput
+              type="text"
+              required
+              formControlName="correoCliente"
+              />
+        </mat-form-field>
+        <div *ngIf="isValidField('correoCliente')"  
+        style="position: relative; top: 315px;"
+        >
+         Email invalido
+      </div>
+        
+        <!-- Boton Adjunto -->
+        <div  style="position: sticky; top: 0;">
+        <button type="button" mat-raised-button (click)="fileInput.click()">Adjuntos</button>
+        <input hidden (change)="onFileSelected($event)" #fileInput type="file">
+        <span class="file-name">{{selectedFile?.name}}</span>
+        </div>
+        
+        <mat-card class="col-12 sm:col-8">
+           <mat-card-title>Detalle Reclamo</mat-card-title>
+           <div formGroupName="reclamoEstado" >
+              <div class="form-group">
+                 <mat-form-field class="col-12 sm:col-15">
+                    <mat-label>Correo Asesor</mat-label>
+                    <input
+                       matInput
+                       type="text"
+                       required
+                       formControlName="correoAsesor"
+                       />
+                 </mat-form-field>
+
+                 <span *ngIf="isChildValidField('reclamoEstado.correoAsesor')" >
+         Email invalido
+        </span>
+             
+              </div>
+              <div class="form-group">
+                 <mat-form-field class="col-12 sm:col-15">
+                    <mat-label>Comentario Asesor</mat-label>
+                    <textarea matInput
+                       type="text"
+                       required
+                       formControlName="comentarioAsesor"
+                       ></textarea>
+                 </mat-form-field>
+              </div>
+              <div class="form-group">
+                 <mat-form-field class="col-2">
+                    <mat-label>Estado</mat-label>
+                    <mat-select
+                       formControlName="estado"
+                       required
+                       >
+                       <mat-option *ngFor="let estado of estados"
+                       [value]="estado.id">
+                       {{ estado.desc }}
+                       </mat-option>
+                    </mat-select>
+                 </mat-form-field>
+              </div>
+           </div>
+        </mat-card>
+        </form>
+        <button class="col-1"
+           mat-flat-button
+           color="primary"
+           (click)="onSubmit()"
+           >
+           <mat-icon>save</mat-icon>
+           Guardar
+        </button>
+     </mat-card-content>
+  </mat-card>
+</div>
