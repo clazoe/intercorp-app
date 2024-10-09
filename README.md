@@ -12,11 +12,11 @@ Proyecto en angular con Forms reactivos y Angular Material
 Recuros usados:
 S3 : para desplegar la aplicacion angular
 AWS Application Load Balancer balancea la carga de las instancias
+Relational Database Service: se despliega la base de datos Mysql
 Elastic Container Registry (ECR) : almanecena la imagen docker del microservicio customercare-backend
 Elastic Container Registry:
 - Se crea un cluster fargate
 - Se crea un task para el microservico
 - Se crea un task para el balanceo de carga
-Relational Database Service: se despliega la base de datos Mysql
 
 ![infraestructura-aws](customercare-backend/docs/aws-infraestructure-customercare.jpg)
