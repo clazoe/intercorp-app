@@ -3,7 +3,7 @@ Proyecto que contiene las aplicaciones
 
 customercare-backend : 
 microservicios con las siguientes apis:
-(![coleccion-postman](customercare-backend/docs/intercorp-customer-care.postman_collection.json)
+(![](customercare-backend/docs/intercorp-customer-care.postman_collection.json)
 
 customercare-frontend :
 Proyecto en angular con Forms reactivos y Angular Material
