@@ -1,3 +1,22 @@
 # Aplicacion Customer care - Intercorp
+Proyecto que contiene las aplicaciones
 
-![infrastructure-overview](customercare-backend/docs/aws-infraestructure-customercare.jpg)
+customercare-backend : 
+microservicios con las siguientes apis:
+(customercare-backend/docs/intercorp-customer-care.postman_collection.json)
+
+customercare-frontend :
+Proyecto en angular con Forms reactivos y Angular Material
+
+# Diagrama de Infraestrura provisionado en la nube AWS
+Recuros usados:
+S3 : para desplegar la aplicacion angular
+AWS Application Load Balancer balancea la carga de las instancias
+Elastic Container Registry (ECR) : almanecena la imagen docker del microservicio customercare-backend
+Elastic Container Registry:
+- Se crea un cluster fargate
+- Se crea un task para el microservico
+- Se crea un task para el balanceo de carga
+Relational Database Service: se despliega la base de datos Mysql
+
+![infraestructura-aws](customercare-backend/docs/aws-infraestructure-customercare.jpg)
