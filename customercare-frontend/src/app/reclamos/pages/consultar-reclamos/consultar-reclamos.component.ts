@@ -20,11 +20,16 @@ export class ConsultarReclamosComponent implements OnInit {
 
   public getReclamosData(){
     this.reclamoService.getReclamos()
-      .subscribe(reclamos => {
+      .subscribe
+      (
+        reclamos => {
+        if (Object.entries(reclamos).length !== 0) {
            for (var i in reclamos){
             this.reclamos.push(reclamos[i])
          }
          console.log(reclamos)
-      })
+        }   
+      }  
+     )
     } 
 }

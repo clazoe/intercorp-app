@@ -1,3 +1,3 @@
 export const environment = {
-    baseUrl: 'https://aws/api'
+    baseUrl: 'http://users-customercare-ms-lobal-551308837.us-east-1.elb.amazonaws.com'
   }
