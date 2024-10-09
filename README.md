@@ -10,7 +10,7 @@ Proyecto en angular con Forms reactivos y Angular Material
 
 # Diagrama de Infraestrura provisionado en la nube AWS
 Recuros usados:
-- S3 : para desplegar la aplicacion angular
+- S3 : para desplegar la aplicacion angular. URL: [1]: http://customercare-frontend.s3-website-us-east-1.amazonaws.com/            "Wikipedia" 
 - AWS Application Load Balancer balancea la carga de las instancias
 - Relational Database Service: se despliega la base de datos Mysql
 - Elastic Container Registry (ECR) : almanecena la imagen docker del microservicio customercare-backend
