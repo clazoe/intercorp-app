@@ -1,0 +1,220 @@
+openapi: 3.0.1
+info:
+  title: Claims API
+  description: Claim Backend for Intercorp's Customer Care
+  version: "1.0"
+servers:
+- url: http://localhost:8005
+  description: Generated server url
+paths:
+  /claims:
+    get:
+      tags:
+      - reclamo-controller
+      operationId: listarReclamos
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ReclamoResponseDto"
+    post:
+      tags:
+      - reclamo-controller
+      operationId: crearReclamo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReclamoRequestDto"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: boolean
+  /claims/{id}/status:
+    post:
+      tags:
+      - reclamo-controller
+      operationId: actualizarEstadoReclamoPorCodigo
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReclamoEstadoDto"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: object
+                additionalProperties:
+                  type: boolean
+  /claims/{id}:
+    get:
+      tags:
+      - reclamo-controller
+      operationId: obtenerReclamoPorCodigo
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ReclamoResponseDto"
+components:
+  schemas:
+    AdjuntoDto:
+      type: object
+      properties:
+        nombreAdjunto:
+          type: string
+    ReclamoEstadoDto:
+      type: object
+      properties:
+        correoCliente:
+          type: string
+        estado:
+          type: string
+        comentarioAsesor:
+          type: string
+        correoAsesor:
+          type: string
+    ReclamoRequestDto:
+      type: object
+      properties:
+        descripcion:
+          type: string
+        reclamoMotivo:
+          type: string
+        empresa:
+          type: string
+        adjuntos:
+          type: array
+          items:
+            $ref: "#/components/schemas/AdjuntoDto"
+        reclamoEstado:
+          $ref: "#/components/schemas/ReclamoEstadoDto"
+        correoCliente:
+          type: string
+    Adjunto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        nombreAdjunto:
+          type: string
+    Empresa:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        nombreEmpresa:
+          type: string
+          enum:
+          - Promart
+          - Oeschle
+          - plazaVea
+          - Vivanda
+        descripcionEmpresa:
+          type: string
+    Reclamo:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        descripcion:
+          type: string
+        reclamoMotivo:
+          $ref: "#/components/schemas/ReclamoMotivo"
+        empresa:
+          $ref: "#/components/schemas/Empresa"
+        adjuntos:
+          type: array
+          items:
+            $ref: "#/components/schemas/Adjunto"
+        fechaCreacion:
+          type: string
+          format: date-time
+        correoCliente:
+          type: string
+        reclamoEstado:
+          $ref: "#/components/schemas/ReclamoEstado"
+    ReclamoEstado:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        reclamoEstadoMaestro:
+          $ref: "#/components/schemas/ReclamoEstadoMaestro"
+        comentarioAsesor:
+          type: string
+        updatedAt:
+          type: string
+          format: date-time
+        correoAsesor:
+          type: string
+        reclamo:
+          $ref: "#/components/schemas/Reclamo"
+    ReclamoEstadoMaestro:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        nombreEstado:
+          type: string
+          enum:
+          - PENDIENTE
+          - EN_REVISION
+          - CERRADA
+          - ANULADA
+        descripcion:
+          type: string
+    ReclamoMotivo:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        nombre:
+          type: string
+          enum:
+          - FECHA_ENTREGA_INCUMPLIDA
+          - PRODUCTO_CON_DEFECTOS
+          - PROBLEMAS_CON_PERSONAL
+        descripcion:
+          type: string
+    ReclamoResponseDto:
+      type: object
+      properties:
+        reclamo:
+          $ref: "#/components/schemas/Reclamo"

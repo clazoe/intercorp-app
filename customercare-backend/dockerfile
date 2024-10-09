@@ -1,0 +1,4 @@
+FROM openjdk:17-alpine
+VOLUME /tmp 
+COPY target/customercare-backend-1.0.0.jar customercare-backend-microservice.jar
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/customercare-backend-microservice.jar"]

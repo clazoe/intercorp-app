@@ -1,0 +1,130 @@
+{
+	"info": {
+		"_postman_id": "da2d4c11-4518-43e1-b6c4-16162ea24ee2",
+		"name": "intercorp-customer-care",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "crear-reclamo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"descripcion\":\"No Funciona tv plasma\",\r\n   \"reclamoMotivo\":\"PRODUCTO_CON_DEFECTOS\",\r\n   \"empresa\":\"Oeschle\",\r\n   \"correoCliente\" : \"cleinte@mail.com\",\r\n   \"adjuntos\":[\r\n      {\r\n         \"nombreAdjunto\":\"test.txt\"\r\n      },\r\n      {\r\n         \"nombreAdjunto\":\"prueba.jpeg\"\r\n      }\r\n   ],\r\n   \"reclamoEstado\" :  {\r\n       \"correoAsesor\" : \"cleinte@mail.com\" ,\r\n       \"comentarioAsesor\" : \"falla sistema\" ,\r\n       \"estado\": \"EN_REVISION\"\r\n   }    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8005/claims",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8005",
+					"path": [
+						"claims"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-reclamos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8005/claims",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8005",
+					"path": [
+						"claims"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-reclamos-byId",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8005/claims/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8005",
+					"path": [
+						"claims",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar-estado-reclamo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n       \"correoAsesor\" : \"asesorSr@mail.com\" ,\r\n       \"comentarioAsesor\" : \"mala manipulacion del usuario\" ,\r\n       \"estado\": \"ANULADA\"\r\n}  ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8005/claims/2/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8005",
+					"path": [
+						"claims",
+						"2",
+						"status"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
