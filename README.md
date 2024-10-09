@@ -16,7 +16,7 @@ Recuros usados:
 - Elastic Container Registry (ECR) : almanecena la imagen docker del microservicio customercare-backend
 - Elastic Container Registry:
 - Se crea un cluster fargate
-- Se crea un task para el microservico
-- Se crea un task para el balanceo de carga
+- Se crea una task para el microservico
+- Se crea una task para el balanceo de carga
 
 ![infraestructura-aws](customercare-backend/docs/aws-infraestructure-customercare.jpg)
