@@ -19,4 +19,4 @@ Recuros usados:
 - Se crea una task para el microservico
 - Se crea una task para el balanceo de carga
 
-
+![infraestructura-aws](customercare-backend/docs/aws-infraestructure-customercare.jpg)
